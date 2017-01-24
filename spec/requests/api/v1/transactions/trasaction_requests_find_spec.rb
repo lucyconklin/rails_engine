@@ -57,4 +57,14 @@ describe 'Transactions Single Finder API' do
     expect(transaction["credit_card_number"]).to eq(@transaction_1.credit_card_number)
   end
 
+  it 'finds transaction by invoice id' do
+    get "/api/v1/transactions/find?invoice_id=#{@transaction_1.invoice_id}"
+
+    transaction = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(transaction).to be_a(Hash)
+    expect(transaction["credit_card_number"]).to eq(@transaction_1.credit_card_number)
+  end
+
 end

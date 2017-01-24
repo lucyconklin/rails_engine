@@ -15,7 +15,7 @@ describe 'Transactions API' do
     expect(response).to be_success
     expect(transactions.count).to eq(5)
     expect(transaction["id"]).to eq(1)
-    # expect(transaction).to have_key("invoice_id")
+    expect(transaction).to have_key("invoice_id")
     expect(transaction).to have_key("credit_card_number")
     expect(transaction).to have_key("credit_card_expiration_date")
     expect(transaction).to have_key("result")
@@ -30,7 +30,7 @@ describe 'Transactions API' do
 
     expect(response).to be_success
     expect(transaction["id"]).to eq(5)
-    # expect(transaction).to have_key("invoice_id")
+    expect(transaction).to have_key("invoice_id")
     expect(transaction).to have_key("credit_card_number")
     expect(transaction["credit_card_number"]).to eq(@transaction_5.credit_card_number)
     expect(transaction).to have_key("credit_card_expiration_date")

@@ -57,4 +57,14 @@ describe 'Transactions Multi Finder API' do
     expect(transactions[0]["credit_card_number"]).to eq(@transaction_1.credit_card_number)
   end
 
+  it 'finds all transactions by invoice id' do
+    get "/api/v1/transactions/find_all?invoice_id=#{@transaction_1.invoice_id}"
+
+    transaction = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(transaction).to be_a(Array)
+    expect(transaction[0]["credit_card_number"]).to eq(@transaction_1.credit_card_number)
+  end
+
 end
