@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20170124222004) do
   enable_extension "plpgsql"
   enable_extension "citext"
 
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "merchant_id"
+    t.citext   "status"
+    t.datetime "created_at",  precision: 0, null: false
+    t.datetime "updated_at",  precision: 0, null: false
+    t.index ["merchant_id"], name: "index_invoices_on_merchant_id", using: :btree
+  end
+
   create_table "items", force: :cascade do |t|
     t.citext   "name"
     t.citext   "description"
@@ -43,5 +51,6 @@ ActiveRecord::Schema.define(version: 20170124222004) do
     t.index ["result"], name: "index_transactions_on_result", using: :btree
   end
 
+  add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
 end
