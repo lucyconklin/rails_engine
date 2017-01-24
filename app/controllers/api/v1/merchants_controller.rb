@@ -5,7 +5,6 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def show
-    byebug
     render json: Merchant.find(params[:id].to_i)
   end
 end
