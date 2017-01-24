@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Merchants API" do
   it "returns all merchants" do
-    create(:merchant)
+    create_list(:merchant, 4)
 
     get '/api/v1/merchants'
 
