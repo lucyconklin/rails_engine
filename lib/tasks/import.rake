@@ -1,4 +1,4 @@
-require 'csv'
+require 'smarter_csv'
 
 namespace :import do
 
@@ -16,4 +16,10 @@ namespace :import do
 
     puts "Imported #{counter} merchants"
   end
+
+  # desc "Import items from csv"
+  #   task items: :environment do
+  #     counter = 0
+  #     SmarterCSV.
+  #   end
 end
