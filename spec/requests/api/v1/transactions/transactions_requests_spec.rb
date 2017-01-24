@@ -1,0 +1,25 @@
+require 'rails_helper'
+
+describe 'Transactions API' do
+  before(:each) do
+    create_list(:transaction, 4)
+    @transaction_5 = create(:transaction)
+  end
+  it 'returns all transactions' do
+
+    get '/api/v1/merchants'
+
+    transactions = JSON.parse(response)
+    transaction = transactions.first
+
+    expect(response).to be_success
+    expect(transactions.count).to eq(4)
+    expect(transaction["id"]).to eq(1)
+    expect(transaction).to have_key("invoice_id")
+    expect(transaction).to have_key("credit_card_number")
+    expect(transaction).to have_key("credit_card_expiration")
+    expect(transaction).to have_key("result")
+    expect(transaction).to have_key("created_at")
+    expect(transaction).to have_key("updated_at")
+  end
+end
