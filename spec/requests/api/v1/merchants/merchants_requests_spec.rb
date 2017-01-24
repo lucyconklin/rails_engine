@@ -58,7 +58,7 @@ describe "Merchants API" do
   it 'finds merchants by name' do
     merchant = create(:merchant)
 
-    get "/api/v1/merchants/find?name=#{merchant.name.downcase}"
+    get "/api/v1/merchants/find?name=#{merchant.name}"
 
     merchant_1 = JSON.parse(response.body)
 
@@ -72,19 +72,33 @@ describe "Merchants API" do
     expect(merchant_1["name"]).to be_a(String)
   end
 
-    it 'finds merchants by name, case insensitive' do
-      merchant = create(:merchant)
+  it 'finds merchants by name, case insensitive' do
+    merchant = create(:merchant)
 
-      get "/api/v1/merchants/find?name=#{merchant.name.downcase}"
+    get "/api/v1/merchants/find?name=#{merchant.name.downcase}"
 
-      merchant_1 = JSON.parse(response.body)
+    merchant_1 = JSON.parse(response.body)
 
-      expect(response).to be_success
-      expect(merchant_1).to be_a(Hash)
-      expect(merchant_1["id"]).to be_a(Integer)
-      expect(merchant_1["id"]).to eq(merchant.id)
-      expect(merchant_1["name"]).to be_a(String)
-      expect(merchant_1["name"]).to eq(merchant.name)
-    end
+    expect(response).to be_success
+    expect(merchant_1).to be_a(Hash)
+    expect(merchant_1["id"]).to be_a(Integer)
+    expect(merchant_1["id"]).to eq(merchant.id)
+    expect(merchant_1["name"]).to be_a(String)
+    expect(merchant_1["name"]).to eq(merchant.name)
+  end
 
+  it 'finds merchants by created at' do
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/find?created_at=#{(merchant.created_at).to_s}"
+
+    merchant_1 = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant_1).to be_a(Hash)
+    expect(merchant_1["id"]).to be_a(Integer)
+    expect(merchant_1["id"]).to eq(merchant.id)
+    expect(merchant_1["name"]).to be_a(String)
+    expect(merchant_1["name"]).to eq(merchant.name)
+  end
 end

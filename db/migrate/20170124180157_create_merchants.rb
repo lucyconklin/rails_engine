@@ -3,7 +3,7 @@ class CreateMerchants < ActiveRecord::Migration[5.0]
     create_table :merchants do |t|
       t.text :name
 
-      t.timestamps
+      t.timestamps precision: 0
     end
   end
 end
