@@ -2,6 +2,9 @@ require 'rails_helper'
 
 describe "Merchants API" do
   it "returns all merchants" do
+    create(:merchant)
+
+    get '/api/v1/merchants'
 
     merchants = JSON.parse(response.body)
     merchant = merchants.first
