@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124220632) do
+ActiveRecord::Schema.define(version: 20170124222004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,10 @@ ActiveRecord::Schema.define(version: 20170124220632) do
   create_table "transactions", force: :cascade do |t|
     t.bigint   "credit_card_number"
     t.string   "credit_card_expiration_date"
-    t.citext   "status"
+    t.citext   "result"
     t.datetime "created_at",                  precision: 0, null: false
     t.datetime "updated_at",                  precision: 0, null: false
-    t.index ["status"], name: "index_transactions_on_status", using: :btree
+    t.index ["result"], name: "index_transactions_on_result", using: :btree
   end
 
   add_foreign_key "items", "merchants"
