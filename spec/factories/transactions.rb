@@ -3,5 +3,6 @@ FactoryGirl.define do
     credit_card_number Faker::Number.number(16)
     credit_card_expiration_date ""
     result ["success", "failed"].sample
+    invoice
   end
 end

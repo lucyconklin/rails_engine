@@ -5,7 +5,7 @@ FactoryGirl.define do
   end
 
   factory :invoice do
-    merchant_id 1
+    merchant
     status
   end
 end
