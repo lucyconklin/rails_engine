@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124033728) do
+ActiveRecord::Schema.define(version: 20170124181116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
@@ -26,10 +27,10 @@ ActiveRecord::Schema.define(version: 20170124033728) do
   end
 
   create_table "merchants", force: :cascade do |t|
-    t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.citext   "name"
+    t.datetime "created_at", precision: 0, null: false
+    t.datetime "updated_at", precision: 0, null: false
+    t.index ["name"], name: "index_merchants_on_name", using: :btree
   end
 
-  add_foreign_key "items", "merchants"
 end
