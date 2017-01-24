@@ -69,7 +69,7 @@ describe "Items API find" do
     expect(item["unit_price"]).to eq(item_3.unit_price)
   end
 
-  xit "finds one matching item by created_at" do
+  it "finds one matching item by created_at" do
     get "/api/v1/items/find?created_at=#{item_1.created_at}"
     item = JSON.parse(response.body)
 
@@ -81,6 +81,13 @@ describe "Items API find" do
   end
 
   it "finds one matching item by updated_at" do
-    skip
+    get "/api/v1/items/find?updated_at=#{item_1.updated_at}"
+    item = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(item["id"]).to eq(item_1.id)
+    expect(item["name"]).to eq(item_1.name)
+    expect(item["description"]).to eq(item_1.description)
+    expect(item["unit_price"]).to eq(item_1.unit_price)
   end
 end
