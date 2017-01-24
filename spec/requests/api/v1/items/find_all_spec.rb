@@ -74,11 +74,14 @@ describe "Items API find all" do
   end
 
   it "finds all matching items by created_at" do
-    get "/api/v1/items/find?created_at=#{item_1.created_at}"
+    get "/api/v1/items/find_all?created_at=#{item_1.created_at}"
+
     items = JSON.parse(response.body)
     item = items.first
 
     expect(response).to be_success
+    expect(items).to be_a(Array)
+    expect(item).to be_a(Hash)
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
@@ -86,12 +89,14 @@ describe "Items API find all" do
   end
 
   it "finds all matching items by updated_at" do
-    get "/api/v1/items/find?updated_at=#{item_1.updated_at}"
+    get "/api/v1/items/find_all?updated_at=#{item_1.updated_at}"
     items = JSON.parse(response.body)
     item = items.first
 
     expect(response).to be_success
-    expect(item["id"]).to eq(item_1.id)
+    expect(items).to be_a(Array)
+    expect(item).to be_a(Hash)
+    expect(item["id"].to_i).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
     expect(item["unit_price"]).to eq(item_1.unit_price)
