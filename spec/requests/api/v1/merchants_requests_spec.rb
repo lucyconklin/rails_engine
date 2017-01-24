@@ -56,7 +56,9 @@ describe "Merchants API" do
   end
 
   it 'finds merchants by name' do
-    merchants = create_list(:merchant, 4)
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/find?name=#{merchant.name}"
 
     merchant_1 = JSON.parse(response.body)
 
@@ -67,8 +69,6 @@ describe "Merchants API" do
     expect(merchant_1).to have_key("created_at")
     expect(merchant_1).to have_key("updated_at")
     expect(merchant_1["id"]).to be_a(Integer)
-    expect(merchant_1["id"]).to eq(first_merchant["id"])
     expect(merchant_1["name"]).to be_a(String)
-    expect(merchant_1["name"]).to eq(first_merchant["name"])
   end
 end
