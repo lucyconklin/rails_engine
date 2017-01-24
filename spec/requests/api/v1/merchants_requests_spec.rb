@@ -22,7 +22,7 @@ describe "Merchants API" do
   it "returns a merchant" do
     create(:merchant)
 
-    get '/api/v1/merchant/1'
+    get '/api/v1/merchants/1'
 
     merchant = JSON.parse(response.body)
 
