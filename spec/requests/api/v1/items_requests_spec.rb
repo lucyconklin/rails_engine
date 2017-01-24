@@ -51,4 +51,64 @@ describe "Items API" do
     expect(item["unit_price"]).to be_a(Integer)
     expect(item["merchant_id"]).to be_a(Integer)
   end
+
+  describe "item find by params" do
+    it "finds one matching item by id" do
+      skip
+    end
+
+    it "finds one matching item by name" do
+      skip
+    end
+
+    it "finds one matching item by description" do
+      skip
+    end
+
+    it "finds one matching item by unit price" do
+      skip
+    end
+
+    it "finds one matching item by merchant_id" do
+      skip
+    end
+
+    it "finds one matching item by created_at" do
+      skip
+    end
+
+    it "finds one matching item by updated_at" do
+      skip
+    end
+  end
+
+  describe "item finds_all by params" do
+    it "finds all matching items by id" do
+      skip
+    end
+
+    it "finds all matching items by name" do
+      skip
+    end
+
+    it "finds all matching items by description" do
+      skip
+    end
+
+    it "finds all matching items by unit price" do
+      skip
+    end
+
+    it "finds all matching items by merchant_id" do
+      skip
+    end
+
+    it "finds all matching items by created_at" do
+      skip
+    end
+
+    it "finds all matching items by updated_at" do
+      skip
+    end
+  end
 end
