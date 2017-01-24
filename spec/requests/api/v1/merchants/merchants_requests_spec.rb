@@ -55,6 +55,23 @@ describe "Merchants API" do
     expect(merchant_4["name"]).to eq(last_merchant["name"])
   end
 
+  it 'finds merchants by id' do
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/find?id=#{merchant.id}"
+
+    merchant_1 = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant_1).to be_a(Hash)
+    expect(merchant_1).to have_key("id")
+    expect(merchant_1).to have_key("name")
+    expect(merchant_1).to have_key("created_at")
+    expect(merchant_1).to have_key("updated_at")
+    expect(merchant_1["id"]).to be_a(Integer)
+    expect(merchant_1["name"]).to be_a(String)
+  end
+
   it 'finds merchants by name' do
     merchant = create(:merchant)
 
@@ -90,7 +107,7 @@ describe "Merchants API" do
   it 'finds merchants by created at' do
     merchant = create(:merchant)
 
-    get "/api/v1/merchants/find?created_at=#{(merchant.created_at).to_s}"
+    get "/api/v1/merchants/find?created_at=#{merchant.created_at}"
 
     merchant_1 = JSON.parse(response.body)
 
@@ -101,4 +118,20 @@ describe "Merchants API" do
     expect(merchant_1["name"]).to be_a(String)
     expect(merchant_1["name"]).to eq(merchant.name)
   end
+
+  it 'finds merchants by updated at' do
+    merchant = create(:merchant)
+
+    get "/api/v1/merchants/find?updated_at=#{merchant.updated_at}"
+
+    merchant_1 = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(merchant_1).to be_a(Hash)
+    expect(merchant_1["id"]).to be_a(Integer)
+    expect(merchant_1["id"]).to eq(merchant.id)
+    expect(merchant_1["name"]).to be_a(String)
+    expect(merchant_1["name"]).to eq(merchant.name)
+  end
+
 end
