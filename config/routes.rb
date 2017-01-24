@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         get 'random', to: 'random#show'
       end
       resources 'items', only: [:index, :show]
-      resources 'transactions', only: [:index]
+      resources 'transactions', only: [:index, :show]
     end
   end
 end
