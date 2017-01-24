@@ -40,3 +40,19 @@ describe 'Transactions API' do
 
   end
 end
+
+describe 'Transactions Random API' do
+    before(:each) do
+      create_list(:transaction, 4)
+    end
+
+    it 'returns a random transaction' do
+      get '/api/v1/transactions/random'
+
+      found = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(found).to be_a(Hash)
+      expect(found["id"]).to be_between(1,4).inclusive
+    end
+end
