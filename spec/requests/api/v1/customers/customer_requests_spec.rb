@@ -35,5 +35,21 @@ describe 'Customers API' do
     expect(customer).to have_key("created_at")
     expect(customer).to have_key("updated_at")
   end
+end
 
+describe 'Customers Random API' do
+  before(:each) do
+    create_list(:customer, 4)
+  end
+
+  it 'returns a random customer' do
+
+    get '/api/v1/customers/random'
+
+    found = JSON.parse(response.body)
+    expect(found).to be_a(Hash)
+    expect(found["id"]).to be_between(1,4).inclusive
+    expect(found).to have_key("first_name")
+    expect(found).to have_key("last_name")
+  end
 end
