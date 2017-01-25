@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         get 'random', to: 'random#show'
         get 'find_all', to: 'find#index'
         get 'find', to: 'find#show'
+        get ':id/transactions', to: 'transactions#index'
       end
       namespace 'customers' do
         get 'random', to: 'random#show'

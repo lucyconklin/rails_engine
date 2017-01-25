@@ -8,11 +8,11 @@ describe 'Invoices Relationship Requests' do
 
     get "/api/v1/invoices/#{invoice.id}/transactions"
 
-    found = JSON.parse(rsponse.body)
+    found = JSON.parse(response.body)
 
     expect(Transaction.count).to eq(10)
-    expect(found).to be_a(Hash)
+    expect(found).to be_a(Array)
     expect(found.count).to eq(5)
-    expect(found.first.invoice_id).to eq(invoice.id)
+    expect(found.first["invoice_id"]).to eq(invoice.id)
   end
 end
