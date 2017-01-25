@@ -7,7 +7,8 @@ class Api::V1::Merchants::FindController < ApplicationController
   def index
     render json: Merchant.where(find_params)
   end
-private
+
+  private
 
   def find_params
     params.permit(:name, :created_at, :updated_at, :id)
