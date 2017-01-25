@@ -18,7 +18,7 @@ describe "Relationship endpoint merchant items" do
     expect(items).to be_a(Array)
     expect(item).to be_a(Hash)
     expect(item).to have_key("id")
-    expect(item.merchant).to eq(@merchant)
+    expect(item["merchant_id"]).to eq(@merchant.id)
     expect(item).to have_key("name")
     expect(item).to have_key("description")
     expect(item).to have_key("created_at")
