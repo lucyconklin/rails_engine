@@ -13,4 +13,16 @@ describe 'Items invoice items relationship' do
     expect(found).to be_a(Array)
     expect(found.first["id"]).to eq(item.id)
   end
+
+  it 'returns merchant associated with an item' do
+    create_list(:item, 20)
+    item = Item.all.sample
+
+    get "/api/v1/items/#{item.id}/merchant"
+
+    found = JSON.parse(response.body)
+
+    expect(found).to be_a(Hash)
+    expect(found["id"]).to eq(item.merchant_id)
+  end
 end

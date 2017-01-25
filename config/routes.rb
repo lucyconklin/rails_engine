@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get 'find', to: 'find#show'
         get 'random', to: 'random#show'
         get ':id/invoice_items', to: 'invoice_item#index'
+        get ':id/merchant', to: 'merchant#show'
       end
       namespace 'transactions' do
         get 'find', to: 'find#show'
