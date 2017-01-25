@@ -1,12 +1,11 @@
 require 'rails_helper'
+require 'api_spec_helper'
 
 describe "Relationship endpoint merchant items" do
   before :each do
-    @merchant = create(:merchant)
-    @merchant_2 = create(:merchant)
-    @item_1, @item_2 = create_list(:item, 2, merchant_id: @merchant.id)
-    @item_3 = create(:item, merchant_id: @merchant_2.id)
+    create_merchant_with_items
   end
+
   it "returns a collection of items associated with that merchant" do
     get "/api/v1/merchants/#{@merchant.id}/items"
 
@@ -21,7 +20,5 @@ describe "Relationship endpoint merchant items" do
     expect(item["merchant_id"]).to eq(@merchant.id)
     expect(item).to have_key("name")
     expect(item).to have_key("description")
-    expect(item).to have_key("created_at")
-    expect(item).to have_key("updated_at")
   end
 end
