@@ -21,4 +21,19 @@ describe 'Customers API' do
     expect(customer).to have_key("created_at")
     expect(customer).to have_key("updated_at")
   end
+
+  it 'returns a specific customers' do
+
+    get '/api/v1/customers/1'
+
+    customer =  JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(customer["id"]).to eq(@customer_1.id)
+    expect(customer["first_name"]).to eq(@customer_1.first_name)
+    expect(customer["last_name"]).to eq(@customer_1.last_name)
+    expect(customer).to have_key("created_at")
+    expect(customer).to have_key("updated_at")
+  end
+
 end
