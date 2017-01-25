@@ -8,8 +8,8 @@ FactoryGirl.define do
   end
 
   factory :invoice_item do
-    invoice_id 1
-    item_id 1
+    invoice
+    item
     quantity
     unit_price
   end
