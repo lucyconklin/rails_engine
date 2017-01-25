@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124211017) do
+ActiveRecord::Schema.define(version: 20170125020914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
+
+  create_table "customers", force: :cascade do |t|
+    t.citext   "first_name"
+    t.citext   "last_name"
+    t.datetime "created_at", precision: 0, null: false
+    t.datetime "updated_at", precision: 0, null: false
+    t.index ["first_name"], name: "index_customers_on_first_name", using: :btree
+    t.index ["last_name"], name: "index_customers_on_last_name", using: :btree
+  end
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "merchant_id"
@@ -42,6 +51,18 @@ ActiveRecord::Schema.define(version: 20170124211017) do
     t.index ["name"], name: "index_merchants_on_name", using: :btree
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint   "credit_card_number"
+    t.string   "credit_card_expiration_date"
+    t.citext   "result"
+    t.datetime "created_at",                  precision: 0, null: false
+    t.datetime "updated_at",                  precision: 0, null: false
+    t.integer  "invoice_id"
+    t.index ["invoice_id"], name: "index_transactions_on_invoice_id", using: :btree
+    t.index ["result"], name: "index_transactions_on_result", using: :btree
+  end
+
   add_foreign_key "invoices", "merchants"
   add_foreign_key "items", "merchants"
+  add_foreign_key "transactions", "invoices"
 end
