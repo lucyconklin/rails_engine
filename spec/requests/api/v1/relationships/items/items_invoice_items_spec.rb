@@ -20,9 +20,9 @@ describe 'Items invoice items relationship' do
 
     get "/api/v1/items/#{item.id}/merchant"
 
-    found = JSON.parse(found.body)
+    found = JSON.parse(response.body)
 
     expect(found).to be_a(Hash)
-    expect(found.id).to eq(item.merchant_id)
+    expect(found["id"]).to eq(item.merchant_id)
   end
 end
