@@ -3,7 +3,8 @@ require "rails_helper"
 describe "Invoices API find all" do
   let!(:merchant_1) { create(:merchant) }
   let!(:merchant_2) { create(:merchant) }
-  let!(:invoice_1) { create(:invoice, merchant_id: merchant_1.id) }
+  let!(:customer) { create(:customer) }
+  let!(:invoice_1) { create(:invoice, merchant_id: merchant_1.id, customer_id: customer.id) }
   let!(:invoice_2) { create(:invoice, merchant_id: merchant_1.id) }
   let!(:invoice_3) { create(:invoice, merchant_id: merchant_2.id) }
   let!(:invoice_4) { create(:invoice, merchant_id: merchant_2.id) }
@@ -19,24 +20,24 @@ describe "Invoices API find all" do
     expect(invoice).to be_a(Hash)
     expect(invoice["id"]).to eq(invoice_1.id)
     expect(invoice["merchant_id"]).to eq(merchant_1.id)
-    # expect(invoice["customer_id"]).to eq(customer.id)
+    expect(invoice["customer_id"]).to eq(customer.id)
     expect(invoice["status"]).to eq(invoice_1.status)
   end
 
-  # xit "finds all invoices by customer_id" do
-  #   get "/api/v1/invoices/find_all?customer_id=#{invoice_2.customer_id}"
-  #
-  #   invoices = JSON.parse(response.body)
-  #   invoice = invoices.first
-  #
-  #   expect(response).to be_success
-  #   expect(invoices).to be_at(Array)
-  #   expect(invoice).to be_a(Hash)
-  #   expect(invoice["id"]).to eq(invoice_2.id)
-  #   expect(invoice["merchant_id"]).to eq(merchant_1.id)
-  #   expect(invoice["customer_id"]).to eq(customer.id)
-  #   expect(invoice["status"]).to eq(invoice_1.status)
-  # end
+  it "finds all invoices by customer_id" do
+    get "/api/v1/invoices/find_all?customer_id=#{customer.id}"
+
+    invoices = JSON.parse(response.body)
+    invoice = invoices.first
+
+    expect(response).to be_success
+    expect(invoices).to be_a(Array)
+    expect(invoice).to be_a(Hash)
+    expect(invoice["id"]).to eq(invoice_1.id)
+    expect(invoice["merchant_id"]).to eq(merchant_1.id)
+    expect(invoice["customer_id"]).to eq(customer.id)
+    expect(invoice["status"]).to eq(invoice_1.status)
+  end
 
   it "finds all invoices by merchant_id" do
     get "/api/v1/invoices/find_all?merchant_id=#{invoice_1.merchant_id}"
@@ -49,7 +50,7 @@ describe "Invoices API find all" do
     expect(invoice).to be_a(Hash)
     expect(invoice["id"]).to eq(invoice_1.id)
     expect(invoice["merchant_id"]).to eq(merchant_1.id)
-    # expect(invoice["customer_id"]).to eq(customer.id)
+    expect(invoice["customer_id"]).to eq(customer.id)
     expect(invoice["status"]).to eq(invoice_1.status)
   end
 
@@ -63,7 +64,7 @@ describe "Invoices API find all" do
     expect(invoice).to be_a(Hash)
     expect(invoice["id"]).to eq(invoice_1.id)
     expect(invoice["merchant_id"]).to eq(merchant_1.id)
-    # expect(invoice["customer_id"]).to eq(customer.id)
+    expect(invoice["customer_id"]).to eq(customer.id)
     expect(invoice["status"]).to eq(invoice_1.status)
   end
 
