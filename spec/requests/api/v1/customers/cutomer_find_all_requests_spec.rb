@@ -15,8 +15,6 @@ describe 'Customers Multiple Finder API' do
     expect(customers).to be_a(Array)
     expect(customers[0]["first_name"]).to eq(@customer_1.first_name)
     expect(customers[0]["last_name"]).to eq(@customer_1.last_name)
-    expect(customers[0]).to have_key("created_at")
-    expect(customers[0]).to have_key("updated_at")
   end
 
   it 'finds customer by first name' do
@@ -28,8 +26,6 @@ describe 'Customers Multiple Finder API' do
     expect(customers).to be_a(Array)
     expect(customers[0]["first_name"]).to eq(@customer_1.first_name)
     expect(customers[0]["last_name"]).to eq(@customer_1.last_name)
-    expect(customers[0]).to have_key("created_at")
-    expect(customers[0]).to have_key("updated_at")
   end
 
   it 'finds customer by last name' do
@@ -41,8 +37,6 @@ describe 'Customers Multiple Finder API' do
     expect(customers).to be_a(Array)
     expect(customers[0]["first_name"]).to eq(@customer_1.first_name)
     expect(customers[0]["last_name"]).to eq(@customer_1.last_name)
-    expect(customers[0]).to have_key("created_at")
-    expect(customers[0]).to have_key("updated_at")
   end
 
   it 'finds customer by created at' do
@@ -54,8 +48,6 @@ describe 'Customers Multiple Finder API' do
     expect(customers).to be_a(Array)
     expect(customers[0]["first_name"]).to eq(@customer_1.first_name)
     expect(customers[0]["last_name"]).to eq(@customer_1.last_name)
-    expect(customers[0]).to have_key("created_at")
-    expect(customers[0]).to have_key("updated_at")
   end
 
   it 'finds customer by updated at' do
@@ -67,8 +59,5 @@ describe 'Customers Multiple Finder API' do
     expect(customers).to be_a(Array)
     expect(customers[0]["first_name"]).to eq(@customer_1.first_name)
     expect(customers[0]["last_name"]).to eq(@customer_1.last_name)
-    expect(customers[0]).to have_key("created_at")
-    expect(customers[0]).to have_key("updated_at")
   end
-
 end

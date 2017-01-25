@@ -17,10 +17,7 @@ describe 'Transactions API' do
     expect(transaction["id"]).to eq(1)
     expect(transaction).to have_key("invoice_id")
     expect(transaction).to have_key("credit_card_number")
-    expect(transaction).to have_key("credit_card_expiration_date")
     expect(transaction).to have_key("result")
-    expect(transaction).to have_key("created_at")
-    expect(transaction).to have_key("updated_at")
   end
 
   it 'returns a specific transaction' do
@@ -33,11 +30,7 @@ describe 'Transactions API' do
     expect(transaction).to have_key("invoice_id")
     expect(transaction).to have_key("credit_card_number")
     expect(transaction["credit_card_number"]).to eq(@transaction_5.credit_card_number)
-    expect(transaction).to have_key("credit_card_expiration_date")
     expect(transaction).to have_key("result")
-    expect(transaction).to have_key("created_at")
-    expect(transaction).to have_key("updated_at")
-
   end
 end
 

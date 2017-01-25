@@ -14,7 +14,6 @@ describe "Merchants API" do
     expect(merchant).to be_a(Hash)
     expect(merchant).to have_key("id")
     expect(merchant).to have_key("name")
-    expect(merchant).to have_key("created_at")
     expect(merchant["id"]).to be_a(Integer)
     expect(merchant["name"]).to be_a(String)
   end
@@ -32,8 +31,6 @@ describe "Merchants API" do
     expect(merchant_1).to be_a(Hash)
     expect(merchant_1).to have_key("id")
     expect(merchant_1).to have_key("name")
-    expect(merchant_1).to have_key("created_at")
-    expect(merchant_1).to have_key("updated_at")
     expect(merchant_1["id"]).to be_a(Integer)
     expect(merchant_1["id"]).to eq(first_merchant["id"])
     expect(merchant_1["name"]).to be_a(String)
@@ -47,8 +44,6 @@ describe "Merchants API" do
     expect(merchant_4).to be_a(Hash)
     expect(merchant_4).to have_key("id")
     expect(merchant_4).to have_key("name")
-    expect(merchant_4).to have_key("created_at")
-    expect(merchant_4).to have_key("updated_at")
     expect(merchant_4["id"]).to be_a(Integer)
     expect(merchant_4["id"]).to eq(last_merchant["id"])
     expect(merchant_4["name"]).to be_a(String)
@@ -66,8 +61,6 @@ describe "Merchants API" do
     expect(merchant_1).to be_a(Hash)
     expect(merchant_1).to have_key("id")
     expect(merchant_1).to have_key("name")
-    expect(merchant_1).to have_key("created_at")
-    expect(merchant_1).to have_key("updated_at")
     expect(merchant_1["id"]).to be_a(Integer)
     expect(merchant_1["name"]).to be_a(String)
   end
@@ -83,8 +76,6 @@ describe "Merchants API" do
     expect(merchant_1).to be_a(Hash)
     expect(merchant_1).to have_key("id")
     expect(merchant_1).to have_key("name")
-    expect(merchant_1).to have_key("created_at")
-    expect(merchant_1).to have_key("updated_at")
     expect(merchant_1["id"]).to be_a(Integer)
     expect(merchant_1["name"]).to be_a(String)
   end
@@ -133,5 +124,4 @@ describe "Merchants API" do
     expect(merchant_1["name"]).to be_a(String)
     expect(merchant_1["name"]).to eq(merchant.name)
   end
-
 end
