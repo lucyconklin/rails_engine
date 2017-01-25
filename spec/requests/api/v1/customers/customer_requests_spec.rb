@@ -18,7 +18,7 @@ describe 'Customers API' do
     expect(customer["id"]).to eq(@customer_1.id)
     expect(customer["first_name"]).to eq(@customer_1.first_name)
     expect(customer["last_name"]).to eq(@customer_1.last_name)
-    expect(customer["created_at"]).to eq(@customer_1.created_at)
-    expect(customer["updated_at"]).to eq(@customer_1.updated_at)
+    expect(customer).to have_key("created_at")
+    expect(customer).to have_key("updated_at")
   end
 end
