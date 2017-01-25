@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124232753) do
+ActiveRecord::Schema.define(version: 20170125020914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
+
+  create_table "customers", force: :cascade do |t|
+    t.citext   "first_name"
+    t.citext   "last_name"
+    t.datetime "created_at", precision: 0, null: false
+    t.datetime "updated_at", precision: 0, null: false
+    t.index ["first_name"], name: "index_customers_on_first_name", using: :btree
+    t.index ["last_name"], name: "index_customers_on_last_name", using: :btree
+  end
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "merchant_id"
