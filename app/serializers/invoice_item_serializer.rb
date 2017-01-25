@@ -3,7 +3,5 @@ class InvoiceItemSerializer < ActiveModel::Serializer
              :invoice_id,
              :item_id,
              :quantity,
-             :unit_price,
-             :created_at,
-             :updated_at
+             :unit_price
 end
