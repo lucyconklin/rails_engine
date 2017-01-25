@@ -103,4 +103,14 @@ namespace :import do
 
     puts "Imported #{counter} transactions"
   end
+
+desc "Import all data"
+  task :all do
+    Rake::Task["import:merchants"].invoke
+    Rake::Task["import:customers"].invoke
+    Rake::Task["import:items"].invoke
+    Rake::Task["import:invoices"].invoke
+    Rake::Task["import:invoice_items"].invoke
+    Rake::Task["import:transactions"].invoke
+  end
 end
