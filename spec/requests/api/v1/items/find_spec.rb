@@ -42,7 +42,7 @@ describe "Items API find" do
   end
 
   it "finds one matching item by unit price" do
-    get "/api/v1/items/find?unit_price=#{item_1.unit_price}"
+    get "/api/v1/items/find?unit_price=#{(item_1.unit_price)}"
 
     item = JSON.parse(response.body)
 
