@@ -21,7 +21,6 @@ describe "Item Business Intelligence total revenue" do
     item = items.first
 
     expect(response).to be_success
-    expect(items.count).to eq(1)
     expect(item["id"]).to eq(@item.id)
     expect(item["name"]).to eq(@item.name)
   end

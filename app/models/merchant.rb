@@ -19,13 +19,6 @@ class Merchant < ApplicationRecord
     .merge(Transaction.success)
     .order("sum DESC")
     .limit(quantity)
-
-    # # select("merchants AS sum")
-    # joins(invoices: [:transactions, :invoice_items])
-    # .merge(Transaction.success)
-    # .sum("invoice_items.quantity * invoice_items.unit_price")
-    # .order("sum DESC")
-    # .limit(quantity)
   end
 
   def self.most_sold(quantity = 1)
