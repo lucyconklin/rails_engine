@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :item do
     name
-    description Faker::Space.star
+    description
     unit_price  Faker::Number.between(1,100000)
     merchant
   end
