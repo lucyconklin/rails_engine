@@ -12,17 +12,29 @@ class Merchant < ApplicationRecord
             .first
   end
 
-  def self.most_revenue(quantity = 1)
-    # select("something sum AS sum")
+  def self.most_revenue(quantity=1)
+    Merchant
+    .select("merchants.*, (invoice_items.quantity * invoice_items.unit_price) AS sum")
     .joins(invoices: [:transactions, :invoice_items])
     .merge(Transaction.success)
-    .group("merchants.id")
+    .order("sum DESC")
+    .limit(quantity)
+
+    # # select("merchants AS sum")
+    # joins(invoices: [:transactions, :invoice_items])
+    # .merge(Transaction.success)
+    # .sum("invoice_items.quantity * invoice_items.unit_price")
     # .order("sum DESC")
     # .limit(quantity)
   end
 
   def self.most_sold(quantity = 1)
-    puts "Hello World!"
+    Merchant
+    .select("merchants.*, SUM(invoice_items.quantity) AS sum")
+    .joins(invoices: [:transactions, :invoice_items])
+    .merge(Transaction.success)
+    .order("sum DESC")
+    .limit(quantity)
   end
 
   def total_revenue
