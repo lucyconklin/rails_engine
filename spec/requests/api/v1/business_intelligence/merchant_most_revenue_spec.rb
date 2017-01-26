@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Merchant Business Intelligence most revenue" do
   before(:each) do
-    create_list(:merchant_with_items, 4)
+    create_list(:merchant, 4)
     @merchant = Merchant.last
     invoice_1 = create(:invoice, merchant_id: @merchant.id)
     invoice_2 = create(:invoice, merchant_id: @merchant.id)
@@ -14,7 +14,7 @@ describe "Merchant Business Intelligence most revenue" do
   end
 
   it "returns a merchants ranked by total revenue" do
-    get "/api/v1/merchants/most_revenue?quantity=1"
+    get "/api/v1/merchants/most_revenue"
 
     merchants = JSON.parse(response.body)
     merchant = merchants.first

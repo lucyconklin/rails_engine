@@ -13,8 +13,16 @@ class Merchant < ApplicationRecord
   end
 
   def self.most_revenue(quantity = 1)
-    joins(:invoices)
-    # .merge(Transaction.success)
+    # select("something sum AS sum")
+    .joins(invoices: [:transactions, :invoice_items])
+    .merge(Transaction.success)
+    .group("merchants.id")
+    # .order("sum DESC")
+    # .limit(quantity)
+  end
+
+  def self.most_sold(quantity = 1)
+    puts "Hello World!"
   end
 
   def total_revenue
