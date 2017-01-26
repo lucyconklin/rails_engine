@@ -5,7 +5,6 @@ describe "Relationship endpoint customer invoices" do
     @customer_1 = create(:customer)
     @customer_2 = create(:customer)
     @customer_3 = create(:customer)
-    item = create(:item)
     invoice_1 = create(:invoice, customer_id: @customer_1.id)
     invoice_2 = create(:invoice, customer_id: @customer_1.id)
     invoice_3 = create(:invoice, customer_id: @customer_2.id)
