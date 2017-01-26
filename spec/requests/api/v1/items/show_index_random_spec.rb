@@ -24,7 +24,7 @@ describe "Items API" do
     expect(item["id"]).to be_a(Integer)
     expect(item["name"]).to be_a(String)
     expect(item["description"]).to be_a(String)
-    expect(item["unit_price"]).to be_a(Integer)
+    expect(item["unit_price"]).to be_a(String)
     expect(item["merchant_id"]).to be_a(Integer)
   end
 
@@ -48,7 +48,7 @@ describe "Items API" do
     expect(item["id"]).to be_a(Integer)
     expect(item["name"]).to be_a(String)
     expect(item["description"]).to be_a(String)
-    expect(item["unit_price"]).to be_a(Integer)
+    expect(item["unit_price"]).to be_a(String)
     expect(item["merchant_id"]).to be_a(Integer)
   end
 
@@ -72,7 +72,7 @@ describe "Items API" do
     expect(item["id"]).to be_a(Integer)
     expect(item["name"]).to be_a(String)
     expect(item["description"]).to be_a(String)
-    expect(item["unit_price"]).to be_a(Integer)
+    expect(item["unit_price"]).to be_a(String)
     expect(item["merchant_id"]).to be_a(Integer)
   end
 end
