@@ -9,4 +9,9 @@ class Api::V1::Merchants::RevenueController < ApplicationController
      serializer: SingleMerchantSerializer
    end
   end
+
+  def index
+    render json: Merchant.total_revenue(params[:date]),
+    serializer: AllMerchantsSerializer
+  end
 end
