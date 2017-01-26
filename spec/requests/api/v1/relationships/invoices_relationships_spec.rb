@@ -44,7 +44,7 @@ describe 'Invoices Relationship Requests' do
     expect(Item.count).to eq(20)
     expect(found).to be_a(Array)
     expect(found.count).to eq(10)
-    expect(found.first["unit_price"]).to eq(@invoice.items.first.unit_price)
+    expect(found.first["unit_price"]).to eq(@invoice.items.first.unit_price.to_s.insert(-3, "."))
   end
 
   it 'returns a customer by invoice id' do
