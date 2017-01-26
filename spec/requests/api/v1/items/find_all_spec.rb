@@ -47,7 +47,7 @@ describe "Items API find all" do
   end
 
   it "finds all matching items by unit price" do
-    get "/api/v1/items/find_all?unit_price=#{item_1.unit_price}"
+    get "/api/v1/items/find_all?unit_price=#{item_1.unit_price / 100.0}"
 
     items = JSON.parse(response.body)
 

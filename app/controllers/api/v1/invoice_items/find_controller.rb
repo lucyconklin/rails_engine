@@ -1,10 +1,20 @@
 class Api::V1::InvoiceItems::FindController < ApplicationController
   def show
-    render json: InvoiceItem.where(find_params).first
+    if params[:unit_price]
+      unit_price = (params[:unit_price].to_f * 100).to_i
+      render json: InvoiceItem.find_by(unit_price: unit_price)
+    else
+      render json: InvoiceItem.where(find_params).first
+    end
   end
 
   def index
-    render json: InvoiceItem.where(find_params)
+    if params[:unit_price]
+      unit_price = (params[:unit_price].to_f * 100).to_i
+      render json: InvoiceItem.where(unit_price: unit_price)
+    else
+      render json: InvoiceItem.where(find_params)
+    end
   end
 
   private
