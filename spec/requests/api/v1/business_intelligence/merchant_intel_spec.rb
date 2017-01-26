@@ -42,7 +42,7 @@ describe "All Merchants Business Intelligence" do
     found = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(found).to have_key("revenue")
-    expect(found["revenue"]).to be_a(String)
+    expect(found).to have_key("total_revenue")
+    expect(found["total_revenue"]).to be_a(String)
   end
 end

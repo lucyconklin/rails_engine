@@ -11,7 +11,7 @@ class Api::V1::Merchants::RevenueController < ApplicationController
   end
 
   def index
-    render json: Merchant.select {|merchant| merchant.date_total_revenue(params[:date])},
+    render json: Merchant.total_revenue(params[:date]),
     serializer: AllMerchantsSerializer
   end
 end
