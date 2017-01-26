@@ -46,4 +46,17 @@ describe 'Invoices Relationship Requests' do
     expect(found.count).to eq(10)
     expect(found.first["unit_price"]).to eq(@invoice.items.first.unit_price)
   end
+
+  it 'returns a customer by invoice id' do
+    create_list(:customer, 5)
+    customer = Customer.find(@invoice.customer_id)
+
+    get "/api/v1/invoices/#{@invoice.id}/customer"
+
+    found = JSON.parse(response.body)
+
+    expect(found).to be_a(Hash)
+    expect(found["id"]).to eq(customer.id)
+    expect(found["first_name"]).to eq(customer.first_name)
+  end
 end
