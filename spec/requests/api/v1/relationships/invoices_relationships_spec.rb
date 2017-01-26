@@ -64,7 +64,7 @@ describe 'Invoices Relationship Requests' do
     create_list(:merchant, 5)
     merchant = Merchant.find(@invoice.merchant_id)
 
-    get "/api/v1/invoices/#{@invoice_id}/merchant"
+    get "/api/v1/invoices/#{@invoice.id}/merchant"
 
     found = JSON.parse(response.body)
 
