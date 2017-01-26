@@ -39,6 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', :require => false
+  gem 'pry'
 end
 
 group :development do

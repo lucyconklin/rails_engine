@@ -3,14 +3,10 @@ FactoryGirl.define do
     n%6
   end
 
-  sequence :unit_price do |n|
-    (n%4 + 1) * 1000
-  end
-
   factory :invoice_item do
     invoice
     item
     quantity
-    unit_price
+    unit_price  Faker::Number.between(1,100000)
   end
 end

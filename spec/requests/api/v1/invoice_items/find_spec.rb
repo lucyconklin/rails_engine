@@ -63,7 +63,7 @@ describe "Invoice Items API find" do
   end
 
   it "finds one invoice_item by unit_price" do
-    get "/api/v1/invoice_items/find?unit_price=#{@invoice_item_1.unit_price}"
+    get "/api/v1/invoice_items/find?unit_price=#{(@invoice_item_1.unit_price / 100.0)}"
 
     invoice_item = JSON.parse(response.body)
 
