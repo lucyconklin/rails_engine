@@ -44,5 +44,6 @@ describe "All Merchants Business Intelligence" do
     expect(response).to be_success
     expect(found).to have_key("total_revenue")
     expect(found["total_revenue"]).to be_a(String)
+    expect(found["total_revenue"]).to_not eq("0")
   end
 end
