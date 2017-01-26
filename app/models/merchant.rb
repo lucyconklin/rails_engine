@@ -15,6 +15,7 @@ class Merchant < ApplicationRecord
   def self.most_revenue(quantity = 1)
     joins(:invoices)
     # .merge(Transaction.success)
+  end
 
   def total_revenue
     invoices.joins(:transactions, :invoice_items)
