@@ -59,4 +59,17 @@ describe 'Invoices Relationship Requests' do
     expect(found["id"]).to eq(customer.id)
     expect(found["first_name"]).to eq(customer.first_name)
   end
+
+  it 'returns a merchant by invoice id' do
+    create_list(:merchant, 5)
+    merchant = Merchant.find(@invoice.merchant_id)
+
+    get "/api/v1/invoices/#{@invoice_id}/merchant"
+
+    found = JSON.parse(response.body)
+
+    expect(found).to be_a(Hash)
+    expect(found["id"]).to eq(merchant.id)
+    expect(found["name"]).to eq(merchant.name)
+  end
 end
