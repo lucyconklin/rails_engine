@@ -14,7 +14,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by name" do
@@ -26,7 +26,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_2.id)
     expect(item["name"]).to eq(item_2.name)
     expect(item["description"]).to eq(item_2.description)
-    expect(item["unit_price"]).to eq(item_2.unit_price)
+    expect(item["unit_price"]).to eq(item_2.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by description" do
@@ -38,7 +38,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_2.id)
     expect(item["name"]).to eq(item_2.name)
     expect(item["description"]).to eq(item_2.description)
-    expect(item["unit_price"]).to eq(item_2.unit_price)
+    expect(item["unit_price"]).to eq(item_2.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by unit price" do
@@ -50,7 +50,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by merchant_id" do
@@ -66,7 +66,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_3.id)
     expect(item["name"]).to eq(item_3.name)
     expect(item["description"]).to eq(item_3.description)
-    expect(item["unit_price"]).to eq(item_3.unit_price)
+    expect(item["unit_price"]).to eq(item_3.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by created_at" do
@@ -77,7 +77,7 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds one matching item by updated_at" do
@@ -88,6 +88,6 @@ describe "Items API find" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1.unit_price.to_s.insert(-3, "."))
   end
 end

@@ -24,7 +24,7 @@ describe "Invoice_items API" do
     expect(invoice_item["item_id"]).to be_a(Integer)
     expect(invoice_item["invoice_id"]).to be_a(Integer)
     expect(invoice_item["quantity"]).to be_a(Integer)
-    expect(invoice_item["unit_price"]).to be_a(Integer)
+    expect(invoice_item["unit_price"]).to be_a(String)
   end
 
   it "returns a specific invoice_item" do
@@ -43,7 +43,7 @@ describe "Invoice_items API" do
     expect(invoice_item["item_id"]).to be_a(Integer)
     expect(invoice_item["invoice_id"]).to be_a(Integer)
     expect(invoice_item["quantity"]).to be_a(Integer)
-    expect(invoice_item["unit_price"]).to be_a(Integer)
+    expect(invoice_item["unit_price"]).to be_a(String)
   end
 
   it "returns a random invoice_item" do
@@ -63,6 +63,6 @@ describe "Invoice_items API" do
     expect(invoice_item["item_id"]).to be_a(Integer)
     expect(invoice_item["invoice_id"]).to be_a(Integer)
     expect(invoice_item["quantity"]).to be_a(Integer)
-    expect(invoice_item["unit_price"]).to be_a(Integer)
+    expect(invoice_item["unit_price"]).to be_a(String)
   end
 end

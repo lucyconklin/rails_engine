@@ -17,7 +17,7 @@ describe "Items API find all" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1.unit_price.to_s.insert(-3, "."))
   end
 
   it "finds all matching items by name" do
@@ -54,7 +54,7 @@ describe "Items API find all" do
     expect(response).to be_success
     expect(items).to be_a(Array)
     expect(items.count).to eq(2)
-    expect(items.first['unit_price']).to eq(item_1.unit_price)
+    expect(items.first['unit_price']).to eq(item_1. unit_price.to_s.insert(-3, "."))
   end
 
   it "finds all matching items by merchant_id" do
@@ -85,7 +85,7 @@ describe "Items API find all" do
     expect(item["id"]).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1. unit_price.to_s.insert(-3, "."))
   end
 
   it "finds all matching items by updated_at" do
@@ -99,6 +99,6 @@ describe "Items API find all" do
     expect(item["id"].to_i).to eq(item_1.id)
     expect(item["name"]).to eq(item_1.name)
     expect(item["description"]).to eq(item_1.description)
-    expect(item["unit_price"]).to eq(item_1.unit_price)
+    expect(item["unit_price"]).to eq(item_1. unit_price.to_s.insert(-3, "."))
   end
 end
