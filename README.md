@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Rails Engine
 
-Things you may want to cover:
+* An API for analyzing sales date
 
-* Ruby version
+## Clone the Project
 
-* System dependencies
+* In your teminal: ```git clone git@github.com:riverswb/rails_engine.git ```
 
-* Configuration
+* Get in the project: ``` cd rails_engine ```
 
-* Database creation
+## Setup
 
-* Database initialization
+* In terminal: ```bundle install ```
 
-* How to run the test suite
+* Download the CSV files into the db/csv folder from [here](https://github.com/turingschool-examples/sales_engine/tree/master/data)
 
-* Services (job queues, cache servers, search engines, etc.)
+* Prepare your Postgres Database with: ``` rake db:create db:migrate db:test:prepare ```
 
-* Deployment instructions
+* Seed the database by running this in terminal: ``` rake import:all ```
 
-* ...
+## Check that setup was successful
+
+* In your terminal: ``` rspec ```
+
+* You should see a beautiful wall of green test names, if not check the setup steps
