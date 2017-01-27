@@ -12,5 +12,6 @@ FactoryGirl.define do
     description
     unit_price  Faker::Number.between(1,100000)
     merchant
+    created_at Faker::Date.between(10.days.ago, Date.today)
   end
 end
