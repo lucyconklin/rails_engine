@@ -10,7 +10,8 @@ class Item < ApplicationRecord
 
   def self.most_revenue(quantity=1)
     Item
-    .select("items.*, (invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
+    .select("items.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
+    .group("id")
     .joins(invoice_items: [invoice: :transactions])
     .merge(Transaction.success)
     .order("total_revenue DESC")
@@ -19,7 +20,8 @@ class Item < ApplicationRecord
 
   def self.most_items(quantity=1)
     Item
-    .select("items.*, (invoice_items.quantity) AS total_items")
+    .select("items.*, SUM(invoice_items.quantity) AS total_items")
+    .group("id")
     .joins(invoice_items: [invoice: :transactions])
     .merge(Transaction.success)
     .order("total_items DESC")

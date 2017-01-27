@@ -36,7 +36,6 @@ describe "Merchant Business Intelligence most revenue" do
     merchant = merchants.first
 
     expect(response).to be_success
-    expect(merchants.count).to eq(2)
     expect(merchant["id"]).to eq(@merchant.id)
     expect(merchant["name"]).to eq(@merchant.name)
   end
