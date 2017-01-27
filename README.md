@@ -36,7 +36,9 @@ rake db:test:prepare
 ```
 
 ## Parse the data
-Download the [data csv](https://github.com/turingschool-examples/sales_engine/tree/master/data) files, and put them in `db/csv`. Then you can parse the csvs using:
+The data is located in `db/csv`
+
+You can view the source of the [data csv](https://github.com/turingschool-examples/sales_engine/tree/master/data) files. Then you can parse the csvs using:
 ```
 rake import:all
 ```
@@ -51,6 +53,10 @@ rake import:all
 
 ## Endpoints
 Now that you have your API set up, you can visit these endpoints to see a JSON response.
+
+In your terminal, start a local server: `rails server`
+
+Open your preferred browser to `localhost:3000`
 
 ### Record Endpoints
 
