@@ -11,6 +11,7 @@ describe 'Items Business Intelligence Endpoints' do
     found = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(found).to be_a(String)
+    expect(found).to have_key("best_day")
+    expect(found['best_day']).to be_a(String)
   end
 end
