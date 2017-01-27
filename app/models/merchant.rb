@@ -2,6 +2,35 @@ class Merchant < ApplicationRecord
   validates_presence_of :name
   has_many :items
   has_many :invoices
+  has_many :customers, through: :invoices
+
+  def favorite_customer
+    customers.joins(:transactions)
+            .merge(Transaction.success)
+            .group("customers.id")
+            .order("count(transactions.id) DESC")
+            .first
+  end
+
+  def self.most_revenue(quantity=1)
+    Merchant
+    .select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS sum")
+    .group("id")
+    .joins(invoices: [:transactions, :invoice_items])
+    .merge(Transaction.success)
+    .order("sum DESC")
+    .limit(quantity)
+  end
+
+  def self.most_items(quantity = 1)
+    Merchant
+    .select("merchants.*, SUM(invoice_items.quantity) AS sum")
+    .group("id")
+    .joins(invoices: [:transactions, :invoice_items])
+    .merge(Transaction.success)
+    .order("sum DESC")
+    .limit(quantity)
+  end
 
   def total_revenue
     invoices.joins(:transactions, :invoice_items)
